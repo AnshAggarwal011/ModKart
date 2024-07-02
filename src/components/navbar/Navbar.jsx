@@ -139,8 +139,8 @@ function Navbar() {
               <div className="ml-4 flex lg:ml-0">
                 <Link to={'/'} className='flex'>
                   <div className="flex ">
-                    {/* <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '', }} >ModKart</h1> */}
-                    <img src="public\Images\logo.png" alt="Logo" width="25%" height="20%" className=' text-2xl font-bold text-black  px-2 py-1 rounded'></img>
+                    <h1 className=' text-2xl font-bold text-black  px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '', }} >ModKart</h1>
+                    {/* <img src="public\Images\logo.png" alt="Logo" width="25%" height="20%" className=' text-2xl font-bold text-black  px-2 py-1 rounded'></img> */}
                   </div>
                 </Link>
               </div>
