@@ -7,9 +7,11 @@ import { deleteFromCart } from '../../redux/cartSlice';
 import { toast } from 'react-toastify';
 import { addDoc, collection } from 'firebase/firestore';
 import { fireDB } from '../../firebase/FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const context = useContext(myContext);
+  const navigate = useNavigate();
   const { mode } = context;
 
   const dispatch = useDispatch();
@@ -99,7 +101,7 @@ function Cart() {
           cartItems,
           addressInfo,
           date: new Date().toLocaleString("en-US", {
-            month: "short",
+            month: "short", 
             day: "2-digit",
             year: "numeric",
           }),
@@ -107,10 +109,15 @@ function Cart() {
           userid: JSON.parse(localStorage.getItem("user")).user.uid,
           paymentId,
         };
-
+    
         try {
           const orderRef = collection(fireDB, 'order');
           addDoc(orderRef, orderInfo);
+          cartItems.map((item,index)=>{
+            dispatch(deleteFromCart(item));
+          });
+          navigate('/')
+
         } catch (error) {
           console.log(error);
         }
@@ -122,6 +129,7 @@ function Cart() {
 
     var pay = new window.Razorpay(options);
     pay.open();
+    console.log("hello",cartItems);
     console.log(pay);
   };
 

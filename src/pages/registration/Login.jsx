@@ -19,7 +19,7 @@ function Login() {
         setLoading(true)
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);
-            toast.success("Login successful", {
+            toast.success("Login successful"), {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: true,
@@ -28,12 +28,22 @@ function Login() {
                 draggable: true,
                 progress: undefined,
                 theme: "colored",
-            })
+            }
             localStorage.setItem('user', JSON.stringify(result))
             navigate('/')
             setLoading(false)
 
         } catch (error) {
+            toast.error(error.message), {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            }
             console.log(error)
             setLoading(loading)
         }
